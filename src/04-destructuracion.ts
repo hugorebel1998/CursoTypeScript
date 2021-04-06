@@ -23,11 +23,11 @@ const reproductor: Reproductor = {
     }
 }
 
-// console.info('El volumen es: '+ reproductor.volumen);
-// console.info('El segundo es: '+ reproductor.segundo);
-// console.info('La canción es : '+ reproductor.cancion);
-// console.info('El autor es : '+ reproductor.detalles.autor);
-// console.info('El año de lanzamiento es: '+ reproductor.detalles.anio);
+/*console.info('El volumen es: '+ reproductor.volumen);
+console.info('El segundo es: '+ reproductor.segundo);
+console.info('La canción es : '+ reproductor.cancion);
+console.info('El autor es : '+ reproductor.detalles.autor);
+console.info('El año de lanzamiento es: '+ reproductor.detalles.anio); */
 
 const { volumen, segundo, cancion, detalles: { autor, anio } } = reproductor;
 // Desestructuracion
@@ -42,7 +42,7 @@ console.info('El año de lanzamiento es: ' + anio);
 const onepiece: string[] = ['luffy', 'zoro', 'sanji', 'nami', 'ussop'];
 const [p1, p2, p3, p4] = onepiece;
 
-const [, , , ,p5] = onepiece;
+const [, , , , p5] = onepiece;
 
 console.info('El personaje numero uno es:' + p1);
 console.info('El personaje numero dos es:' + p2);
@@ -51,7 +51,7 @@ console.info('El personaje numero cuatro es:' + p4);
 console.info('El personaje numero quinto es:' + p5);
 
 // Desestructuracion de argumentos
-interface Producto {
+export interface Producto {
     desc: string;
     precio: number;
 }
@@ -66,15 +66,15 @@ const table: Producto = {
     precio: 7400,
 }
 
-function calcularISV(productos: Producto[]):number {
+export function calcularISV(productos: Producto[]): [number, number] {
 
     let total = 0;
 
     // Recorriendo el arreglo de Producto
-    productos.forEach((productos) => {
-        total += productos.precio;
+    productos.forEach(({ precio }) => {
+        total += precio;
     })
-    return total * 0.15;
+    return [total, total * 0.15];
 }
 
 const articulos = [telefono, table];
